@@ -1,0 +1,7 @@
+* {
+    visibility: hidden;
+    color: black;
+}
+#card_title, #card_title h1, #table, #table .sticky, #table .sticky th, #table .nosticky, #table .nosticky td {
+    visibility: visible;
+}
