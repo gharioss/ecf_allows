@@ -17,22 +17,22 @@
                 <div class="add-titre user_infos">
 
                     <label for="edit_fname">Prénom</label>
-                    <input class="edit_user" name="create_fname" require>
+                    <input class="edit_user" name="create_fname" placeholder="Prénom" require>
 
                     <label for="edit_lname">Nom</label>
-                    <input class="edit_user" name="create_lname" require>
+                    <input class="edit_user" name="create_lname" placeholder="Nom" require>
 
                     <label for="edit_email">Email</label>
-                    <input class="edit_user" type="email" name="create_email" require>
+                    <input class="edit_user" type="email" name="create_email" placeholder="Email" require>
 
                     <label for="edit_adress">Adresse</label>
-                    <input class="edit_user" name="create_adress" require>
+                    <input class="edit_user" name="create_adress" placeholder="Adresse" require>
 
                     <label for="edit_city">Ville</label>
-                    <input class="edit_user" name="create_city" require>
+                    <input class="edit_user" name="create_city" placeholder="Ville" require>
 
                     <label for="edit_zip_code">Code Postal</label>
-                    <input class="edit_user" name="create_zip_code" require>
+                    <input class="edit_user" name="create_zip_code" placeholder="Code postal" require>
 
                     <div class="add-category">
                         <label for="edit_role">Catégorie:</label>

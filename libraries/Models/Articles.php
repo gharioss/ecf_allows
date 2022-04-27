@@ -224,27 +224,27 @@ class Articles extends Model
     public function confirm($fname, $title, $content, $collection, $edition)
     {
 
-        if ($fname != null) {
+        if ($fname == null) {
             $stmt1 = $this->pdo->query("UPDATE {$this->table} SET a_lname = 0");
         } else {
             $stmt1 = $this->pdo->query("UPDATE {$this->table} SET a_lname = 1");
         }
-        if ($title != null) {
+        if ($title == null) {
             $stmt3 = $this->pdo->query("UPDATE {$this->table} SET a_title = 0");
         } else {
             $stmt3 = $this->pdo->query("UPDATE {$this->table} SET a_title = 1");
         }
-        if ($content != null) {
+        if ($content == null) {
             $stmt5 = $this->pdo->query("UPDATE {$this->table} SET a_content = 0");
         } else {
             $stmt5 = $this->pdo->query("UPDATE {$this->table} SET a_content = 1");
         }
-        if ($collection != null) {
+        if ($collection == null) {
             $stmt6 = $this->pdo->query("UPDATE {$this->table} SET a_collection = 0");
         } else {
             $stmt6 = $this->pdo->query("UPDATE {$this->table} SET a_collection = 1");
         }
-        if ($edition != null) {
+        if ($edition == null) {
             $stmt7 = $this->pdo->query("UPDATE {$this->table} SET a_edition = 0");
         } else {
             $stmt7 = $this->pdo->query("UPDATE {$this->table} SET a_edition = 1");

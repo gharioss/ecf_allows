@@ -12,7 +12,8 @@ class Pret extends Model
             session_start();
         }
 
-        $stmt1 = $this->pdo->prepare("SELECT * from {$this->table}
+        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.id_article, pret.date_got, pret.date_release,
+        articles.fname, articles.lname, articles.a_lname, articles.title, articles.a_title, articles.img, articles.a_img, articles.content, articles.a_content, articles.date_put, articles.date_update, articles.id_category, articles.available, articles.collection, articles.a_collection, articles.edition, articles.a_edition FROM {$this->table}
                                     LEFT JOIN articles ON pret.id_article = articles.id_article
                                     WHERE id_user = :id_user");
 
@@ -29,7 +30,7 @@ class Pret extends Model
             session_start();
         }
 
-        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.id_article,pret.date_release, DATEDIFF(CURRENT_DATE(),                           date_release) AS date,
+        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.id_article, pret.date_got, pret.date_release, DATEDIFF(CURRENT_DATE(),                      date_release) AS date,
                                     articles.fname, articles.lname, articles.a_lname, articles.title, articles.a_title, articles.img, articles.a_img, articles.content, articles.a_content, articles.date_put, articles.date_update, articles.id_category, articles.available, articles.collection, articles.a_collection, articles.edition, articles.a_edition,
                                     CASE
                                     WHEN DATEDIFF(CURRENT_DATE(), date_release) BETWEEN -1 AND 0 THEN 'C\'est votre dernier jour avant de devoir rendre cet article...'
@@ -71,7 +72,7 @@ class Pret extends Model
 
     public function occupedBooks()
     {
-        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.date_got, pret.id_article,pret.date_release, DATEDIFF(CURRENT_DATE(),                           date_release) AS date,
+        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.id_article, pret.date_got, pret.date_release, DATEDIFF(CURRENT_DATE(),                           date_release) AS date,
                                     articles.fname, articles.lname, articles.a_lname, articles.title, articles.a_title, articles.img, articles.a_img, articles.content, articles.a_content, articles.date_put, articles.date_update, articles.id_category, articles.available, articles.collection, articles.a_collection, articles.edition, articles.a_edition,
                                     users.fname as user_fname, users.lname as user_lname, users.email, users.adress, users.city, users.zip_code, users.id_role,
                                     CASE
@@ -97,7 +98,7 @@ class Pret extends Model
 
     public function print($id)
     {
-        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, DATE_FORMAT(`date_got`, '%d/%m/%Y') as date_got, DATE_FORMAT                 (date_release,'%d/%m/%Y') as date_release, pret.id_article, DATEDIFF(CURRENT_DATE(),date_release) AS date,
+        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.date_got, pret.date_release, pret.id_article, DATEDIFF(CURRENT_DATE(),date_release) AS date,
                                     articles.fname, articles.lname, articles.a_lname, articles.title, articles.a_title, articles.img, articles.a_img, articles.content, articles.a_content, articles.date_put, articles.date_update, articles.id_category, articles.available, articles.collection, articles.a_collection, articles.edition, articles.a_edition,
                                     users.fname as user_fname, users.lname as user_lname, users.email, users.adress, users.city, users.zip_code, users.id_role,
                                     CASE

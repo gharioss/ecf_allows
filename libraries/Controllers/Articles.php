@@ -328,6 +328,6 @@ class Articles extends Controller
 
         $confirmed = $articleClass->confirm($auteur, $titre, $contenu, $collection, $edition);
 
-        $this->redirect('index.php?controller=articles&task=allow');
+        $this->redirect('index.php?controller=articles&task=allow&info=changedAllows');
     }
 }

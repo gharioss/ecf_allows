@@ -644,8 +644,11 @@ label {
 .fa-print:hover {
     color: #2196F3;
 }
-
+.fa-print {
+    background: #fff;
+}
 .print_li {
+    background-color: white;
     width: 250px;
     height: 31px;
     margin-left: 4px;
@@ -675,6 +678,7 @@ label {
 
 .print_p {
     margin-right:10px;
+    background: #fff;
 }
 
 .edit_article_select {
@@ -813,6 +817,7 @@ body{
 }
 footer {
     margin-top: auto;
+    overflow: hidden;
 }
 
 
