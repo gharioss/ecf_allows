@@ -16,6 +16,59 @@ class Articles extends Model
         return $article;
     }
 
+    public function getRoman($id_category)
+    {
+        $stmt1 = $this->pdo->prepare("SELECT * from {$this->table} LEFT JOIN tags ON articles.id_tags = tags.id_tags WHERE available = 1 AND id_category = :id_category");
+        $stmt1->bindParam(':id_category', $id_category);
+        $stmt1->execute();
+        $getRoman = $stmt1->fetchAll();
+
+        $stmt1 = $this->pdo->prepare("SELECT COUNT(*) FROM articles WHERE available = 1 AND id_category = :id_category");
+        $stmt1->bindParam(':id_category', $id_category);
+        $stmt1->execute();
+        $getRows = $stmt1->fetch();
+
+        return $getRoman;
+    }
+
+    public function getRows($id_category)
+    {
+        $stmt1 = $this->pdo->prepare("SELECT COUNT(*) AS count FROM articles WHERE available = 1 AND id_category = :id_category");
+        $stmt1->bindParam(':id_category', $id_category);
+        $stmt1->execute();
+        $getRows = $stmt1->fetch();
+
+        return $getRows;
+    }
+
+
+    // public function getBd()
+    // {
+    //     $stmt1 = $this->pdo->prepare("SELECT * from {$this->table} WHERE id_article = 5");
+    //     $stmt1->execute();
+    //     $getBd = $stmt1->fetch();
+
+    //     return $getBd;
+    // }
+
+    // public function getMagazine()
+    // {
+    //     $stmt1 = $this->pdo->prepare("SELECT * from {$this->table} WHERE id_article = 6");
+    //     $stmt1->execute();
+    //     $getMagazine = $stmt1->fetch();
+
+    //     return $getMagazine;
+    // }
+
+    // public function getManga()
+    // {
+    //     $stmt1 = $this->pdo->prepare("SELECT * from {$this->table} WHERE id_article = 7");
+    //     $stmt1->execute();
+    //     $getManga = $stmt1->fetch();
+
+    //     return $getManga;
+    // }
+
     public function update($id)
     {
         $stmt1 = $this->pdo->prepare("UPDATE {$this->table} SET available = 0 WHERE id_article = :id_article");
@@ -97,13 +150,14 @@ class Articles extends Model
 
         return $all;
     }
-    public function fullEdit($fname, $lname, $title, $content, $collection, $edition, $id)
+    public function fullEdit($fname, $lname, $title, $content, $category, $collection, $edition, $id)
     {
-        $stmt1 = $this->pdo->prepare("UPDATE {$this->table} SET fname = :fname, lname = :lname, title = :title, content = :content, collection = :collection, edition = :edition WHERE id_article = :id_article");
+        $stmt1 = $this->pdo->prepare("UPDATE {$this->table} SET fname = :fname, lname = :lname, title = :title, content = :content, id_category = :id_category, collection = :collection, edition = :edition WHERE id_article = :id_article");
         $stmt1->bindParam(':fname', $fname);
         $stmt1->bindParam(':lname', $lname);
         $stmt1->bindParam(':title', $title);
         $stmt1->bindParam(':content', $content);
+        $stmt1->bindParam(':id_category', $category);
         $stmt1->bindParam(':collection', $collection);
         $stmt1->bindParam(':edition', $edition);
         $stmt1->bindParam(':id_article', $id);

@@ -24,11 +24,21 @@ class Articles extends Controller
 
         $emprunt = $pretClass->getAvailable();
 
+        $getRoman = $articleClass->getRoman('4');
+        $getBd = $articleClass->getRoman('5');
+        $getMagazine = $articleClass->getRoman('6');
+        $getManga = $articleClass->getRoman('7');
+
+        $getRomanRows = $articleClass->getRows('4');
+        $getBdRows = $articleClass->getRows('5');
+        $getMagazineRows = $articleClass->getRows('6');
+        $getMangaRows = $articleClass->getRows('7');
+
 
         $pageTitle = "Articles";
 
 
-        $this->render('accueil', compact('pageTitle', 'articles', 'autheurs', 'categorys', 'allTags', 'emprunt'));
+        $this->render('accueil', compact('pageTitle', 'articles', 'autheurs', 'categorys', 'allTags', 'emprunt', 'getRoman', 'getBd', 'getMagazine', 'getManga', 'getRomanRows', 'getBdRows', 'getMagazineRows', 'getMangaRows'));
     }
 
     public function show()
@@ -217,6 +227,7 @@ class Articles extends Controller
         $content = null;
         $collection = null;
         $edition = null;
+        $category = null;
 
         if (!empty($_POST['article_edit_title']) && !empty($_POST['article_edit_lname']) && !empty($_POST['article_edit_fname']) && !empty($_POST['article_edit_content']) && !empty($_POST['article_edit_edition']) && !empty($_POST['article_edit_collection'])) {
 
@@ -226,9 +237,10 @@ class Articles extends Controller
             $content = $_POST['article_edit_content'];
             $collection = $_POST['article_edit_collection'];
             $edition = $_POST['article_edit_edition'];
+            $category = $_POST['edit_category'];
 
 
-            $articleClass->fullEdit($fname, $lname, $title, $content, $collection, $edition, $id);
+            $articleClass->fullEdit($fname, $lname, $title, $content, $category, $collection, $edition, $id);
 
             $this->redirect('index.php?controller=articles&task=getAllArticle&info=editedArticle');
         }

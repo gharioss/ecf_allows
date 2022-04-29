@@ -63,7 +63,7 @@
 
             <div class="add-category">
                 <label for="add_category">Catégorie:</label>
-                <select class="edit_article_select" id="category" name="add_category">
+                <select class="edit_article_select" id="category" name="edit_category">
                     <option value="4" selected>Roman</option>
                     <option value="5">Bande Dessinée</option>
                     <option value="6">Magasine</option>

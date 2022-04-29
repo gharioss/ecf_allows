@@ -136,47 +136,57 @@
     </div>
 <?php endif; ?>
 
+<?php
+if ($getRomanRows['count'] > 4) {
+    $getRomanRows['count'] == 4;
+} elseif ($getBdRows['count'] > 4) {
+    $getBdRows['count'] == 4;
+} elseif ($getMagazineRows['count'] > 4) {
+    $getMagazineRows['count'] == 4;
+} elseif ($getMangaRows['count'] > 4) {
+    $getMangaRows['count'] = 4;
+}
+?>
+
 
 <div class="card_title">
     <h1>Roman</h1>
 </div>
 <ul class="card_lst">
-    <?php for ($i = 0; $i <= 5; $i++) : ?>
-        <?php if ($articles[$i]['id_category'] === "4") : ?>
-            <li>
-                <div class="card_flipper">
-                    <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $articles[$i]['id_article']; ?>">
-                        <div class="card_front">
-                            <?php if ($articles[$i]['a_img'] == 1) : ?>
-                                <img src="<?= $articles[$i]['img'] ?>" />
-                            <?php endif; ?>
-                            <div class="info card_title">
-                            </div>
+    <?php for ($i = 0; $i <= $getRomanRows['count'] - 1; $i++) : ?>
+        <li>
+            <div class="card_flipper">
+                <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $getRoman[$i]['id_article']; ?>">
+                    <div class="card_front">
+                        <?php if ($getRoman[$i]['a_img'] == 1) : ?>
+                            <img src="<?= $getRoman[$i]['img'] ?>" />
+                        <?php endif; ?>
+                        <div class="info card_title">
                         </div>
-                        <div class="card_back">
-                            <div class="info back_info">
-                                <?php if ($articles[$i]['a_title'] == 1) : ?>
-                                    <h3 class="subj"> <?= $articles[$i]['title']; ?></h3>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <?php if ($articles[$i]['a_lname']) : ?>
-                                    <p class="author"><?= $articles[$i]['fname'] . ' ' . $articles[$i]['lname']; ?></p>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <p class="author"><?= $articles[$i]['tags']; ?></p>
+                    </div>
+                    <div class="card_back">
+                        <div class="info back_info">
+                            <?php if ($getRoman[$i]['a_title'] == 1) : ?>
+                                <h3 class="subj"> <?= $getRoman[$i]['title']; ?></h3>
                                 <p class="line"></p>
+                            <?php endif; ?>
+                            <?php if ($getRoman[$i]['a_lname']) : ?>
+                                <p class="author"><?= $getRoman[$i]['fname'] . ' ' . $getRoman[$i]['lname']; ?></p>
+                                <p class="line"></p>
+                            <?php endif; ?>
+                            <p class="author"><?= $getRoman[$i]['tags']; ?></p>
+                            <p class="line"></p>
 
-                                <?php if ($articles[$i]['a_content'] == 1) : ?>
-                                    <p class="summary">
-                                        <?= $articles[$i]['content']; ?>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
+                            <?php if ($getRoman[$i]['a_content'] == 1) : ?>
+                                <p class="summary">
+                                    <?= $getRoman[$i]['content']; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
-                    </a>
-                </div>
-            </li>
-        <?php endif; ?>
+                    </div>
+                </a>
+            </div>
+        </li>
     <?php endfor; ?>
 </ul>
 
@@ -186,41 +196,39 @@
     <h1>Bande Dessinée</h1>
 </div>
 <ul class="card_lst">
-    <?php for ($i = 0; $i <= 5; $i++) : ?>
-        <?php if ($articles[$i]['id_category'] === "5") : ?>
-            <li>
-                <div class="card_flipper">
-                    <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $articles[$i]['id_article']; ?>">
-                        <div class="card_front">
+    <?php for ($i = 0; $i <= $getBdRows['count'] - 1; $i++) : ?>
+        <li>
+            <div class="card_flipper">
+                <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $getBd[$i]['id_article']; ?>">
+                    <div class="card_front">
 
-                            <img src="<?= $articles[$i]['img'] ?>" />
-                            <div class="info card_title">
-                            </div>
+                        <img src="<?= $getBd[$i]['img'] ?>" />
+                        <div class="info card_title">
                         </div>
-                        <div class="card_back">
-                            <div class="info back_info">
-                                <?php if ($articles[$i]['a_title'] == 1) : ?>
-                                    <h3 class="subj"> <?= $articles[$i]['title']; ?></h3>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <?php if ($articles[$i]['a_lname']) : ?>
-                                    <p class="author"><?= $articles[$i]['fname'] . ' ' . $articles[$i]['lname']; ?></p>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <p class="author"><?= $articles[$i]['tags']; ?></p>
+                    </div>
+                    <div class="card_back">
+                        <div class="info back_info">
+                            <?php if ($getBd[$i]['a_title'] == 1) : ?>
+                                <h3 class="subj"> <?= $getBd[$i]['title']; ?></h3>
                                 <p class="line"></p>
+                            <?php endif; ?>
+                            <?php if ($getBd[$i]['a_lname']) : ?>
+                                <p class="author"><?= $getBd[$i]['fname'] . ' ' . $getBd[$i]['lname']; ?></p>
+                                <p class="line"></p>
+                            <?php endif; ?>
+                            <p class="author"><?= $getBd[$i]['tags']; ?></p>
+                            <p class="line"></p>
 
-                                <?php if ($articles[$i]['a_content'] == 1) : ?>
-                                    <p class="summary">
-                                        <?= $articles[$i]['content']; ?>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
+                            <?php if ($getBd[$i]['a_content'] == 1) : ?>
+                                <p class="summary">
+                                    <?= $getBd[$i]['content']; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
-                    </a>
-                </div>
-            </li>
-        <?php endif; ?>
+                    </div>
+                </a>
+            </div>
+        </li>
     <?php endfor; ?>
 </ul>
 
@@ -230,41 +238,39 @@
     <h1>Magazine</h1>
 </div>
 <ul class="card_lst">
-    <?php for ($i = 0; $i <= 5; $i++) : ?>
-        <?php if ($articles[$i]['id_category'] === "6") : ?>
-            <li>
-                <div class="card_flipper">
-                    <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $articles[$i]['id_article']; ?>">
-                        <div class="card_front">
+    <?php for ($i = 0; $i <= $getMagazineRows['count'] - 1; $i++) : ?>
+        <li>
+            <div class="card_flipper">
+                <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $getMagazine[$i]['id_article']; ?>">
+                    <div class="card_front">
 
-                            <img src="<?= $articles[$i]['img'] ?>" />
-                            <div class="info card_title">
-                            </div>
+                        <img src="<?= $getMagazine[$i]['img'] ?>" />
+                        <div class="info card_title">
                         </div>
-                        <div class="card_back">
-                            <div class="info back_info">
-                                <?php if ($articles[$i]['a_title'] == 1) : ?>
-                                    <h3 class="subj"> <?= $articles[$i]['title']; ?></h3>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <?php if ($articles[$i]['a_lname']) : ?>
-                                    <p class="author"><?= $articles[$i]['fname'] . ' ' . $articles[$i]['lname']; ?></p>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <p class="author"><?= $articles[$i]['tags']; ?></p>
+                    </div>
+                    <div class="card_back">
+                        <div class="info back_info">
+                            <?php if ($getMagazine[$i]['a_title'] == 1) : ?>
+                                <h3 class="subj"> <?= $getMagazine[$i]['title']; ?></h3>
                                 <p class="line"></p>
+                            <?php endif; ?>
+                            <?php if ($getMagazine[$i]['a_lname']) : ?>
+                                <p class="author"><?= $getMagazine[$i]['fname'] . ' ' . $getMagazine[$i]['lname']; ?></p>
+                                <p class="line"></p>
+                            <?php endif; ?>
+                            <p class="author"><?= $getMagazine[$i]['tags']; ?></p>
+                            <p class="line"></p>
 
-                                <?php if ($articles[$i]['a_content'] == 1) : ?>
-                                    <p class="summary">
-                                        <?= $articles[$i]['content']; ?>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
+                            <?php if ($getMagazine[$i]['a_content'] == 1) : ?>
+                                <p class="summary">
+                                    <?= $getMagazine[$i]['content']; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
-                    </a>
-                </div>
-            </li>
-        <?php endif; ?>
+                    </div>
+                </a>
+            </div>
+        </li>
     <?php endfor; ?>
 </ul>
 
@@ -275,41 +281,39 @@
     <h1>Manga</h1>
 </div>
 <ul class="card_lst">
-    <?php for ($i = 0; $i <= 5; $i++) : ?>
-        <?php if ($articles[$i]['id_category'] === "7") : ?>
-            <li>
-                <div class="card_flipper">
-                    <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $articles[$i]['id_article']; ?>">
-                        <div class="card_front">
+    <?php for ($i = 0; $i <= $getMangaRows['count'] - 1; $i++) : ?>
+        <li>
+            <div class="card_flipper">
+                <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $getManga[$i]['id_article']; ?>">
+                    <div class="card_front">
 
-                            <img src="<?= $articles[$i]['img'] ?>" />
-                            <div class="info card_title">
-                            </div>
+                        <img src="<?= $getManga[$i]['img'] ?>" />
+                        <div class="info card_title">
                         </div>
-                        <div class="card_back">
-                            <div class="info back_info">
-                                <?php if ($articles[$i]['a_title'] == 1) : ?>
-                                    <h3 class="subj"> <?= $articles[$i]['title']; ?></h3>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <?php if ($articles[$i]['a_lname']) : ?>
-                                    <p class="author"><?= $articles[$i]['fname'] . ' ' . $articles[$i]['lname']; ?></p>
-                                    <p class="line"></p>
-                                <?php endif; ?>
-                                <p class="author"><?= $articles[$i]['tags']; ?></p>
+                    </div>
+                    <div class="card_back">
+                        <div class="info back_info">
+                            <?php if ($getManga[$i]['a_title'] == 1) : ?>
+                                <h3 class="subj"> <?= $getManga[$i]['title']; ?></h3>
                                 <p class="line"></p>
+                            <?php endif; ?>
+                            <?php if ($getManga[$i]['a_lname']) : ?>
+                                <p class="author"><?= $getManga[$i]['fname'] . ' ' . $getManga[$i]['lname']; ?></p>
+                                <p class="line"></p>
+                            <?php endif; ?>
+                            <p class="author"><?= $getManga[$i]['tags']; ?></p>
+                            <p class="line"></p>
 
-                                <?php if ($articles[$i]['a_content'] == 1) : ?>
-                                    <p class="summary">
-                                        <?= $articles[$i]['content']; ?>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
+                            <?php if ($getManga[$i]['a_content'] == 1) : ?>
+                                <p class="summary">
+                                    <?= $getManga[$i]['content']; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
-                    </a>
-                </div>
-            </li>
-        <?php endif; ?>
+                    </div>
+                </a>
+            </div>
+        </li>
     <?php endfor; ?>
 </ul>
 <script src="javascript/close.js"></script>
